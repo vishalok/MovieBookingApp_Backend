@@ -1,10 +1,16 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 const Movie = require('./models/movies.models');
 const { PORT } = require('./configs/server.config');
 const { DB_URL } = require('./configs/db.config');
+
+//Using the bodyParser middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 
 //IIFE
 (async ()=> {
