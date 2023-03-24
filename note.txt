@@ -1,0 +1,12 @@
+//create new movie --- postman data
+{
+    "name": "Bachhan Pandey 02",
+   "description": "Comedy Masala Movie",
+   "casts": ["Akshay Kumar", "Jacqueline Fernandiz"],
+   "director": "Farhad Samji",
+   "trailerUrl": "http://bacchanpandey/trailers/1",
+   "posterUrl": "http://bacchanpandey/posters/1",
+   "language": "Hindi",
+   "releaseDate": "29-03-2022",
+   "releaseStatus": "RELEASED"
+}
