@@ -1,3 +1,4 @@
+const {released, unreleased, blocked} = require('../utils/constant')
 
 
 function validateMovieReqBody(req, res, next){
@@ -19,7 +20,7 @@ function validateMovieReqBody(req, res, next){
         })
     }
 
-    const defaultRelaseStatus = ['UNRELEASED', 'RELEASED', 'BLOCKED'];
+    const defaultRelaseStatus = [released, unreleased, blocked];
     const tempStatus = defaultRelaseStatus.includes(req.body.releaseStatus);
     console.log('releaseStatus', tempStatus);
     if(!tempStatus){
