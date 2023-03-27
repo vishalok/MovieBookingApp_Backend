@@ -29,7 +29,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 async function init(){
     try{
         await Movie.collection.drop();
-    await Movie.create({
+        const movie1 =  await Movie.create({
         name: "Bachhan Pandey",
         description: "Comedy Masala Movie",
         casts: ["Akshay Kumar", "Jacqueline Fernandiz"],
@@ -40,7 +40,7 @@ async function init(){
         releaseDate: "18-03-2022",
         releaseSatus: "RELEASED"
     });
-    await Movie.create({
+    const movie2 =  await Movie.create({
         name: "Jalsa",
         description: "Intense Drama Movie",
         casts: ["Vidya Balan", "Shefali Shah"],
@@ -51,7 +51,7 @@ async function init(){
         releaseDate: "18-03-2022",
         releaseSatus: "RELEASED"
     });
-    await Movie.create({
+    const movie3 =  await Movie.create({
         name: "Jhund",
         description: "Comedy Drama Movie",
         casts: ["Amitabh Bachchan", "Abhinay Raj"],
@@ -62,7 +62,7 @@ async function init(){
         releaseDate: "04-03-2022",
         releaseSatus: "RELEASED"
     });
-    await Movie.create({
+    const movie4 = await Movie.create({
         name: "Radhe Shyam",
         description: "Comedy Drama Movie",
         casts: ["Prabhas", "Pooja Hegde"],
@@ -73,7 +73,7 @@ async function init(){
         releaseDate: "11-03-2022",
         releaseSatus: "RELEASED"
     });
-    await Movie.create({
+    const movie5 = await Movie.create({
         name: "The Kashmir Files",
         description: "Intense Movie",
         casts: ["Mithun Chakraborty", "Anupam Kher"],
@@ -91,27 +91,31 @@ async function init(){
         name : "FunCinemas" ,
         city : "Bangalore",
         description : "Top class theatre" ,
-        pinCode : 560052 
+        pinCode : 560052,
+        movies: [movie1._id,movie2._id]
     });
     await Theatre.create({
         name : "PVR Cinemas - Kormangala" ,
         city : "Bangalore",
         description : "PVR franchise theatre" ,
-        pinCode : 560095 
+        pinCode : 560095,
+        movies: [movie3._id,movie4._id]
 
     });
     await Theatre.create({
         name : "IMax" ,
         city : "Bangalore",
         description : "IMax franchise theatre" ,
-        pinCode : 560095 
+        pinCode : 560095,
+        movies: [movie4._id,movie5._id]
 
     });
     await Theatre.create({
         name : "Vaibhav Theatre" ,
         city : "Bangalore",
         description : "Economical theatre" ,
-        pinCode : 560094
+        pinCode : 560094,
+        movies: [movie1._id,movie4._id]
 
     });
 
@@ -119,14 +123,16 @@ async function init(){
         name : "Inox" ,
         city : "Pune",
         description : "Top class theatre" ,
-        pinCode : 411001 
+        pinCode : 411001,
+        movies: [movie2._id,movie5._id] 
 
     });
     await Theatre.create({
         name : "Sonmarg Theatre" ,
         city : "Pune",
         description : "Economical theatre" ,
-        pinCode : 411042 
+        pinCode : 411042,
+        movies: [movie3._id,movie5._id] 
 
     });
 
