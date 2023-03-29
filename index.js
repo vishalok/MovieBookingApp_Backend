@@ -136,7 +136,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //     });
 
-    console.log("Theatres created");
+    //console.log("Theatres created");
 // }
 // catch(err){
 //     console.log('error while inserting default entries in DB', err);

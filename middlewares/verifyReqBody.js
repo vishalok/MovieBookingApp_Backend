@@ -42,7 +42,20 @@ function validateMovieReqBody(req, res, next){
 }
 
 
+function validateTheatreReqBody(req, res, next){
+    const id = req.params.id;
+  if (!id || isNaN(id)) {
+    return res.status(400).send({ 
+        msg: 'Invalid Theatre Id'
+    });
+  }
+    
+    
+    next();
+}
+
 
 module.exports = {
-    validateMovieReqBody
+    validateMovieReqBody,
+    validateTheatreReqBody
 }

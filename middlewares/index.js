@@ -1,5 +1,6 @@
-const { validateMovieReqBody } = require('./verifyReqBody');
+const { validateMovieReqBody, validateTheatreReqBody} = require('./verifyReqBody');
 
 module.exports = {
-    validateMovieReqBody
+    validateMovieReqBody,
+    validateTheatreReqBody
 }
