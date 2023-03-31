@@ -1,5 +1,5 @@
 const { getAllMovies, getMovieBasedOnId, createMovie, updateMovie, deleteMovie } = require('../controllers/movie.controller');
-const { validateMovieReqBody,verifyToken} = require('../middlewares');
+const { validateMovieReqBody, verifyToken} = require('../middlewares');
 
 
 module.exports = (app) => {

@@ -128,6 +128,7 @@ async function checkMovieInTheatre(req, res){
     res.send(response);
 }
 
+
 module.exports = {
     getAllTheatres,
     getTheatreBasedOnId,

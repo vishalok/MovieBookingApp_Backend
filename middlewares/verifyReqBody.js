@@ -1,4 +1,5 @@
 const {released, unreleased, blocked} = require('../utils/constant')
+const  Theater  = require('../models/theatre.model');
 
 
 function validateMovieReqBody(req, res, next){
@@ -54,8 +55,21 @@ function validateTheatreReqBody(req, res, next){
     next();
 }
 
-
+const theaterNameExists = async (req, res, next) => {
+    try {
+      const theater = await Theater.findOne({ name: req.body.name });
+      if (theater) {
+        return res.status(400).json({
+             msg: 'Theater name already exists' 
+            });
+      }
+      next();
+    } catch (error) {
+      return res.status(500).json({ error: error.message });
+    }
+  };
 module.exports = {
     validateMovieReqBody,
-    validateTheatreReqBody
+    validateTheatreReqBody,
+    theaterNameExists
 }
