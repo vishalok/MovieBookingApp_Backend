@@ -56,7 +56,7 @@ async function signIn(req,res){
     }
 
     const token = await jwt.sign({id :user._id}, 'heyeyehehyhhyh' ,{
-        expiresIn: 120
+        expiresIn: 1200
     });
 
     const responseObject = {

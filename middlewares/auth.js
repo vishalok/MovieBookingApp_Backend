@@ -28,7 +28,7 @@ async function verifyToken(req, res, next){
 }
 
 async function isAdmin(req, res, next){
-    const id = req._id;
+    const id = req.userId;
 
     const user = await User.findOne({
         _id: id

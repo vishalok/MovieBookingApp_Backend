@@ -20,7 +20,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     try{    
         await mongoose.connect(DB_URL);
         console.log('db connected');
-        await init();
+      //  await init();
     }
     catch(err){
         console.error('error getting while connecting mongoDB', err);

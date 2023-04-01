@@ -1,16 +1,16 @@
 const { getAllTheatres, getTheatreBasedOnId, createTheatre,
      updateTheatre, deleteTheatre, updateMoviesInTheatre,checkMovieInTheatre } = require('../controllers/theatre.controller');
-const { validateTheatreReqBody } = require('../middlewares')
+const { verifyToken,validateTheatreReqBody,validateTheatreRequestBody } = require('../middlewares')
 const { theaterNameExists } = require('../middlewares/verifyReqBody')
 
 
 module.exports = (app) => {
-    app.get('/mba/api/v1/theatres', getAllTheatres);   
-    app.get('/mba/api/v1/theatre/:id', validateTheatreReqBody,getTheatreBasedOnId); 
+    app.get('/mba/api/v1/theatres', verifyToken,getAllTheatres);   
+    app.get('/mba/api/v1/theatre/:id',verifyToken,getTheatreBasedOnId); 
     app.post('/mba/api/v1/theatre',theaterNameExists,createTheatre); 
-    app.put('/mba/api/v1/theatre/:id', updateTheatre);
-    app.delete('/mba/api/v1/theatre/:id', deleteTheatre);
-    app.put('/mba/api/v1/theatre/:id/movies', updateMoviesInTheatre);
-    app.get('/mba/api/v1/theatres/:theatreId/movies/:movieId', checkMovieInTheatre);
-    
+    app.post('/mba/api/v1/theatre',[verifyToken, validateTheatreRequestBody],createTheatre); 
+    app.put('/mba/api/v1/theatre/:id',[verifyToken, validateTheatreRequestBody], updateTheatre);
+    app.delete('/mba/api/v1/theatre/:id',verifyToken, deleteTheatre);
+    app.put('/mba/api/v1/theatre/:id/movies',verifyToken, updateMoviesInTheatre);
+    app.get('/mba/api/v1/theatres/:theatreId/movies/:movieId',verifyToken, checkMovieInTheatre)
 }
