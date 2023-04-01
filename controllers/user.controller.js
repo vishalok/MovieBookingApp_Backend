@@ -47,7 +47,21 @@ async function updateProfile(req, res){
     }
 }
 
+async function getAllusers(req, res){
+   
+      
+    let reqObject = {};
+    if(req.query.name){
+        reqObject.name = req.query.name;
+    }
+    const result = await User.find(reqObject);
+
+    res.send(result);
+      
+}
+
 module.exports = {
     updatePassword,
-    updateProfile
+    updateProfile,
+    getAllusers
 }
