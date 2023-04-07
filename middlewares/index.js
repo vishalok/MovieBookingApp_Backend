@@ -4,7 +4,7 @@ const { verifyToken, isAdmin} = require('./auth');
 const {validateUserReqBody, validateUserProfile} = require('./validateUserReqBody')
 const {validateTheatreRequestBody} = require('./verifyTheatreReqBody')
 const { validateBookingReqBody } = require('./validateBookingReqBody')
-
+const { validatePaymentReqBody } = require('./validatePaymentReqBody')
 module.exports = {
     validateMovieReqBody,
     validateTheatreReqBody,
@@ -13,6 +13,7 @@ module.exports = {
     validateUserReqBody,
     validateUserProfile,
     validateTheatreRequestBody,
-    validateBookingReqBody
+    validateBookingReqBody,
+    validatePaymentReqBody
 }
 
