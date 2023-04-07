@@ -2,7 +2,7 @@ const Booking = require('../models/booking.model');
 const Payment = require('../models/payment.model');
 const User = require('../models/users.models');
 const {userTypes} = require('../utils/constant')
-
+const {sendMail} = require('../utils/mail');
 
 async function getAllPayments(req,res){
     let tempQuery = {}
@@ -68,6 +68,20 @@ async function createPayment(req,res){
         }
 
         await Payment.create(tempPaymentObject);
+        const payment =  await Payment.create(tempPaymentObject);
+
+        const user = await User.findOne({
+         _id: req._id
+        })
+ 
+         const body = {
+             paymentId: payment._id,
+             paymentStatus: payment.status,
+             booking,
+         }
+ 
+         await sendMail(`Payment is successfull for this booking ${req.body.bookingId}`,
+         JSON.stringify(body),user.email);
 
         return res.send({
             msg: 'payment is done'})
