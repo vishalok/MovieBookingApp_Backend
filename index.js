@@ -23,9 +23,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //IIFE
 (async ()=> {
     try{    
-        await mongoose.connect(DB_URL);
+        await mongoose.connect(connectionString);
         console.log('db connected');
-        await init();
+       // await init();
     }
     catch(err){
         console.error('error getting while connecting mongoDB', err);
