@@ -8,8 +8,13 @@ const Movie = require('./models/movies.models');
 const Theatre = require('./models/theatre.model');
 const User = require('./models/users.models');
 const { PORT } = require('./configs/server.config');
-const { DB_URL } = require('./configs/db.config');
+const { DB_URL, DB_PROD_URL } = require('./configs/db.config');
 
+let connectionString = DB_PROD_URL;
+
+if(process.env.NODE_ENV !== 'production'){
+    connectionString = DB_URL;
+}
 //Using the bodyParser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -20,7 +25,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
     try{    
         await mongoose.connect(DB_URL);
         console.log('db connected');
-      //  await init();
+        await init();
     }
     catch(err){
         console.error('error getting while connecting mongoDB', err);
